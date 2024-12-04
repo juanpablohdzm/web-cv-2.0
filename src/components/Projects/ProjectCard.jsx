@@ -1,4 +1,4 @@
-﻿import Tag from "./Tag";
+﻿import Tag from "../Utilities/Tag";
 
 function ProjectCard({identifier, title, description, tools}) {
     return (

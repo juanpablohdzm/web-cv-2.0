@@ -4,6 +4,7 @@ import feather from "feather-icons";
 import Navbar from "./components/Home/Navbar";
 import ValueCard from "./components/Values/ValueCard";
 import ProjectCard from "./components/Projects/ProjectCard";
+import ExperienceCard from "./components/Experience/ExperienceCard";
 
 function App() {
   useEffect(() => {
@@ -84,92 +85,54 @@ function App() {
 
         </div>
       </Section>
-      <Section className={"py-10 md:py-16"}>
+      <Section className={"py-10 md:py-16"} id={"experience"}>
         <div className="container max-w-screen-xl mx-auto px-4">
 
-          <h1 className="font-medium text-gray-700 text-3xl md:text-4xl mb-5">Education</h1>
-
-          <p className="font-normal text-gray-500 text-xs md:text-base mb-20">Below is a summary of the places I
-            studied</p>
-
+          <h1 className="font-medium text-gray-700 text-3xl md:text-4xl mb-5">Experience</h1>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-gray-50 px-8 py-10 rounded-md">
-              <h4 className="font-medium text-gray-700 text-lg mb-4">2015 – 2016</h4>
-
-              <p className="font-normal text-gray-500 text-md mb-4">Lorem ipsum dolor sit amet,
-                consectetur <br/> adipiscing elit, sed do eiusmod tempor <br/> incididunt ut labore et dolore magna
-                aliqua.</p>
-
-              <div className="relative">
-                <h6 className="font-semibold text-gray-500 text-md relative z-10">See the place here</h6>
-                <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 px-8 py-10 rounded-md">
-              <h4 className="font-medium text-gray-700 text-lg mb-4">2015 – 2016</h4>
-
-              <p className="font-normal text-gray-500 text-md mb-4">Lorem ipsum dolor sit amet,
-                consectetur <br/> adipiscing elit, sed do eiusmod tempor <br/> incididunt ut labore et dolore magna
-                aliqua.</p>
-
-              <div className="relative">
-                <h6 className="font-semibold text-gray-500 text-md relative z-10">See the place here</h6>
-                <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 px-8 py-10 rounded-md">
-              <h4 className="font-medium text-gray-700 text-lg mb-4">2015 – 2016</h4>
-
-              <p className="font-normal text-gray-500 text-md mb-4">Lorem ipsum dolor sit amet,
-                consectetur <br/> adipiscing elit, sed do eiusmod tempor <br/> incididunt ut labore et dolore magna
-                aliqua.</p>
-
-              <div className="relative">
-                <h6 className="font-semibold text-gray-500 text-md relative z-10">See the place here</h6>
-                <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 px-8 py-10 rounded-md">
-              <h4 className="font-medium text-gray-700 text-lg mb-4">2015 – 2016</h4>
-
-              <p className="font-normal text-gray-500 text-md mb-4">Lorem ipsum dolor sit amet,
-                consectetur <br/> adipiscing elit, sed do eiusmod tempor <br/> incididunt ut labore et dolore magna
-                aliqua.</p>
-
-              <div className="relative">
-                <h6 className="font-semibold text-gray-500 text-md relative z-10">See the place here</h6>
-                <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 px-8 py-10 rounded-md">
-              <h4 className="font-medium text-gray-700 text-lg mb-4">2015 – 2016</h4>
-
-              <p className="font-normal text-gray-500 text-md mb-4">Lorem ipsum dolor sit amet,
-                consectetur <br/> adipiscing elit, sed do eiusmod tempor <br/> incididunt ut labore et dolore magna
-                aliqua.</p>
-
-              <div className="relative">
-                <h6 className="font-semibold text-gray-500 text-md relative z-10">See the place here</h6>
-                <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 px-8 py-10 rounded-md">
-              <h4 className="font-medium text-gray-700 text-lg mb-4">2015 – 2016</h4>
-
-              <p className="font-normal text-gray-500 text-md mb-4">Lorem ipsum dolor sit amet,
-                consectetur <br/> adipiscing elit, sed do eiusmod tempor <br/> incididunt ut labore et dolore magna
-                aliqua.</p>
-
-              <div className="relative">
-                <h6 className="font-semibold text-gray-500 text-md relative z-10">See the place here</h6>
-                <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-              </div>
-            </div>
+            <ExperienceCard
+                company={"AppLayer"}
+                title={"Unreal Engine C++/Blockchain Architecture Developer"}
+                time={"November 2024- Today"}
+                tags={["C++", "Unreal Engine", "Solidity", "Slate", "UMG"]}
+            />
+            <ExperienceCard
+                company={"Realworld-one"}
+                title={"Unreal Engine C++ Architecture Developer"}
+                time={"July 2023- November 2024"}
+                tags={["C++", "Unreal Engine", "Slate", "UMG"]}
+            />
+            <ExperienceCard
+                company={"RuckusDev"}
+                title={"Unreal Engine Developer"}
+                time={"October 2020- February 2021"}
+                tags={["C++", "Unreal Engine"]}
+            />
+            <ExperienceCard
+                company={"CheerioWorld/3DIQ"}
+                title={"VR Developer"}
+                time={"April 2019 - October 2022"}
+                tags={["C#", "Unity", "VR", "Photon", "React-Native", "GraphQL", "Meta", "Avatars"]}
+            />
+            <ExperienceCard
+                company={"Framestore"}
+                title={"Unreal Engine VR Developer"}
+                time={"October 2020- February 2021"}
+                tags={["C++", "Unreal Engine", "VR"]}
+            />
+            <ExperienceCard
+                company={"Universidad Panamericana"}
+                title={"Image processing research assistant"}
+                time={"June 2018 - January 2019"}
+                tags={["C#", "Unity", "VR", "Matlab"]}
+            />
+            <ExperienceCard
+                company={"Inmersys"}
+                title={"XR Gameplay programmer"}
+                time={"June 2017 - January 2018"}
+                tags={["C#", "Unity", "VR", "XR", "Mobile", "Photon", "Multiplayer", "Firebase"]}
+            />
           </div>
         </div>
       </Section>

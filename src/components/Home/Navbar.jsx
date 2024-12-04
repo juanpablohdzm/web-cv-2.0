@@ -14,6 +14,7 @@ function Navbar() {
                     <NavbarItem idSection="#home">Home</NavbarItem>
                     <NavbarItem idSection="#values">Values</NavbarItem>
                     <NavbarItem idSection="#projects">Projects</NavbarItem>
+                    <NavbarItem idSection="#experience">Experience</NavbarItem>
                 </div>
 
                 {/* Mobile Menu Toggle (Hamburger) */}
