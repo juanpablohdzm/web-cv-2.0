@@ -5,6 +5,7 @@ import Navbar from "./components/Home/Navbar";
 import ValueCard from "./components/Values/ValueCard";
 import ProjectCard from "./components/Projects/ProjectCard";
 import ExperienceCard from "./components/Experience/ExperienceCard";
+import ProfilePicture from "./profile-picture.jpg";
 
 function App() {
   useEffect(() => {
@@ -17,8 +18,8 @@ function App() {
         <div className={"container max-w-screen-xl mx-auto px-4"}>
           <Navbar/>
           <div className="text-center">
-            <div className={"flex justify-center md:py-20 mb-16"}>
-              <img src="https://imgs.search.brave.com/BK-vqJBpcoCb4k9sW2L-udvKr9Af138T6hxIErLUhF4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4LzAxLzQ4LzE5/LzM2MF9GXzgwMTQ4/MTk3Nl9ZcUVNUkJ3/YTR5S0VKV3R2TzNM/QVM1TnhxWDByQmha/RS5qcGc" alt="Profile"/>
+            <div className={"flex justify-center md:py-20"}>
+              <img src={ProfilePicture} alt="Profile" className="rounded-full w-2/12"/>
             </div>
             <h6 className="font-medium text-gray-600 text-lg md:text-2xl uppercase mb-8">Juan Pablo Hernandez Mosti</h6>
             <h1 className="font-normal text-gray-900 text-4xl md:text-7xl leading-none mb-8">Senior Software Developer</h1>
