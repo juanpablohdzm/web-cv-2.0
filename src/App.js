@@ -6,6 +6,7 @@ import ValueCard from "./components/Values/ValueCard";
 import ProjectCard from "./components/Projects/ProjectCard";
 import ExperienceCard from "./components/Experience/ExperienceCard";
 import ProfilePicture from "./profile-picture.jpg";
+import Tag from "./components/Utilities/Tag";
 
 function App() {
   useEffect(() => {
@@ -22,8 +23,24 @@ function App() {
               <img src={ProfilePicture} alt="Profile" className="rounded-full w-2/12"/>
             </div>
             <h6 className="font-medium text-gray-600 text-lg md:text-2xl uppercase mb-8">Juan Pablo Hernandez Mosti</h6>
-            <h1 className="font-normal text-gray-900 text-4xl md:text-7xl leading-none mb-8">Senior Software Developer</h1>
-            <p className="font-normal text-gray-600 text-md md:text-xl mb-16">Passionate software engineer, with proficient knowledge in Gameplay Programming, VR, AR, Software Architecture, and Mobile Applications.</p>
+            <h1 className="font-normal text-gray-900 text-4xl md:text-7xl leading-none mb-8">Senior Software
+              Developer</h1>
+            <p className="font-normal text-gray-600 text-md md:text-xl mb-16">Passionate software engineer, with
+              proficient knowledge in Gameplay Programming, VR, AR, Software Architecture, and Mobile Applications.</p>
+            <div className="flex justify-center flex-wrap gap-2">
+              <Tag text={"C++"}/>
+              <Tag text={"C#"}/>
+              <Tag text={"JS/TS"}/>
+              <Tag text={"Solidity"}/>
+              <Tag text={"React Native"}/>
+              <Tag text={"React"}/>
+              <Tag text={"Unreal Engine"}/>
+              <Tag text={"Unity"}/>
+              <Tag text={"Git"}/>
+              <Tag text={"P4V"}/>
+              <Tag text={"NodeJS"}/>
+              <Tag text={"Rust"}/>
+            </div>
           </div>
         </div>
       </Section>
@@ -114,7 +131,7 @@ function App() {
                 company={"CheerioWorld/3DIQ"}
                 title={"VR Developer"}
                 time={"April 2019 - October 2022"}
-                tags={["C#", "Unity", "VR", "Photon", "React-Native", "GraphQL", "Meta", "Avatars"]}
+                tags={["C#", "Unity", "VR", "Photon","TS", "React-Native", "GraphQL", "Meta", "Avatars"]}
             />
             <ExperienceCard
                 company={"Framestore"}
@@ -166,39 +183,22 @@ function App() {
           <div className="text-center">
 
             <div className="flex items-center justify-center space-x-8">
-              <a href="#"
-                 className="w-16 h-16 flex items-center justify-center rounded-full hover:bg-gray-200 transition ease-in-out duration-500">
-                <i data-feather="twitter"
-                   className="text-gray-500 hover:text-gray-800 transition ease-in-out duration-500"></i>
-              </a>
 
-              <a href="#"
+              <a href="https://www.linkedin.com/in/juan-pablo-h-b64094147/"
                  className="w-16 h-16 flex items-center justify-center rounded-full hover:bg-gray-200 transition ease-in-out duration-500">
-                <i data-feather="dribbble"
+                <i data-feather="linkedin"
                    className="text-gray-500 hover:text-gray-700 transition ease-in-out duration-500"></i>
               </a>
 
-              <a href="#"
+              <a href="mailto:juanpablohdzm95@gmail.com"
                  className="w-16 h-16 flex items-center justify-center rounded-full hover:bg-gray-200 transition ease-in-out duration-500">
-                <i data-feather="facebook"
+                <i data-feather="mail"
                    className="text-gray-500 hover:text-gray-700 transition ease-in-out duration-500"></i>
               </a>
 
-              <a href="#"
+              <a href="https://github.com/juanpablohdzm"
                  className="w-16 h-16 flex items-center justify-center rounded-full hover:bg-gray-200 transition ease-in-out duration-500">
-                <i data-feather="codepen"
-                   className="text-gray-500 hover:text-gray-700 transition ease-in-out duration-500"></i>
-              </a>
-
-              <a href="#"
-                 className="w-16 h-16 flex items-center justify-center rounded-full hover:bg-gray-200 transition ease-in-out duration-500">
-                <i data-feather="at-sign"
-                   className="text-gray-500 hover:text-gray-700 transition ease-in-out duration-500"></i>
-              </a>
-
-              <a href="#"
-                 className="w-16 h-16 flex items-center justify-center rounded-full hover:bg-gray-200 transition ease-in-out duration-500">
-                <i data-feather="instagram"
+                <i data-feather="github"
                    className="text-gray-500 hover:text-gray-700 transition ease-in-out duration-500"></i>
               </a>
             </div>
