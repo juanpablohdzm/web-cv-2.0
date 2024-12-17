@@ -4,7 +4,7 @@ import { useState} from "react";
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     return (
-        <nav className="bg-gray-400 text-white w-full h-20 fixed top-0 left-0 z-10 shadow-lg">
+        <nav className="bg-blue-900 text-white w-full h-20 fixed top-0 left-0 z-10 shadow-lg">
             <div className="flex items-center justify-between h-full px-6">
                 <div className="flex items-center space-x-3">
                     <span className="text-xl font-semibold">JUAN PABLO HERNANDEZ MOSTI</span>
