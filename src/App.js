@@ -11,7 +11,7 @@ import Tag from "./components/Utilities/Tag";
 function App() {
   useEffect(() => {
     feather.replace();
-  });
+  },[]);
 
   return (
     <div className="bg-gray-100">
@@ -28,7 +28,7 @@ function App() {
             <h1 className="font-normal text-gray-900 text-4xl md:text-7xl leading-none mb-8">Senior Software
               Developer</h1>
             <p className="font-normal text-gray-600 text-md md:text-xl mb-16">Passionate software engineer, with
-              proficient knowledge in Gameplay Programming, VR, AR, Software Architecture, and Mobile Applications.</p>
+              proficient knowledge in Gameplay Programming, VR, AR, Software Architecture, Blockchain, and Mobile Applications.</p>
             <div className="flex justify-center flex-wrap gap-2">
               <Tag text={"C++"}/>
               <Tag text={"C#"}/>
@@ -38,6 +38,7 @@ function App() {
               <Tag text={"React"}/>
               <Tag text={"Unreal Engine"}/>
               <Tag text={"Unity"}/>
+              <Tag text={"PlayCanvas"}/>
               <Tag text={"Git"}/>
               <Tag text={"P4V"}/>
               <Tag text={"NodeJS"}/>
@@ -122,18 +123,21 @@ function App() {
                 title={"Unreal Engine C++ Architecture Developer"}
                 time={"July 2023- November 2024"}
                 tags={["C++", "Unreal Engine", "Slate", "UMG"]}
+                fileUrl={"recommendations/RW1.pdf"}
             />
             <ExperienceCard
                 company={"RuckusDev"}
                 title={"Unreal Engine Developer"}
                 time={"October 2020- February 2021"}
                 tags={["C++", "Unreal Engine"]}
+                fileUrl={"recommendations/ruckusDev.pdf"}
             />
             <ExperienceCard
                 company={"CheerioWorld/3DIQ"}
                 title={"VR Developer"}
                 time={"April 2019 - October 2022"}
                 tags={["C#", "Unity", "VR", "Photon","TS", "React-Native", "GraphQL", "Meta", "Avatars"]}
+                fileUrl={"recommendations/Cheerio.pdf"}
             />
             <ExperienceCard
                 company={"Framestore"}
