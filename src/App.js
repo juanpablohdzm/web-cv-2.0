@@ -85,19 +85,23 @@ function App() {
 
             <div className="space-y-24">
               <ProjectCard identifier={"01"}
+                           title={"Build the void"}
+                           tools={["JS", "Ethers", "PlayCanvas", "AppLayer", "Blockchain"]}
+                           description={"Build the void is a serverless multiplayer game that allows users to create/modify their own world entirely on the Blockchain. The game is built with PlayCanvas and uses a L2 Ethereum blockchain to store the world data"}/>
+              <ProjectCard identifier={"02"}
                            title={"Modular Notification System"}
                            tools={["C++", "Unreal Engine", "BP", "Reflection", "Multithreading"]}
                            description={"Notification system created entirely in C++, exposed to BP using Unreal's reflection system. The system allows user to dynamically generate a notification body that can be received and used in any other system"}/>
 
-              <ProjectCard identifier={"02"}
+              <ProjectCard identifier={"03"}
                            title={"Blockchain plugin"}
                            tools={["C++", "Unreal Engine", "Solidity", "BP", "Reflection", "Multithreading"]}
                            description={"Blockchain plugin created entirely in C++, exposed to BP using Unreal's. The system allows user to interact with the Ethereum blockchain"}/>
-              <ProjectCard identifier={"03"}
+              <ProjectCard identifier={"04"}
                            title={"Couch"}
                            tools={["C#", "Unity", "VR", "XR", "Mobile", "Photon", "Multiplayer"]}
                            description={"Couch is a multiplayer VR game that allows users to watch Youtube video togethers in a virtual session. Created with Unity and Photon for multiplayer networking"}/>
-              <ProjectCard identifier={"04"}
+              <ProjectCard identifier={"05"}
                            title={"Nevermet"}
                            tools={["JS", "ReactNative", "GraphQL", "iOS", "Android", "Mobile"]}
                            description={"Nevermet is a mobile application that allows users to meet new people. Created with React Native and GraphQL for the backend"}/>
@@ -124,6 +128,7 @@ function App() {
                 time={"July 2023- November 2024"}
                 tags={["C++", "Unreal Engine", "Slate", "UMG"]}
                 fileUrl={"recommendations/RW1.pdf"}
+                videoUrls={["https://www.youtube.com/embed/yEFp-uGQplw?si=_k_kp2Sbdz5qO83t", "https://www.youtube.com/embed/QbGkDOQE9YU?si=MmCe3OLYjen0etIE"]}
             />
             <ExperienceCard
                 company={"RuckusDev"}
@@ -138,12 +143,14 @@ function App() {
                 time={"April 2019 - October 2022"}
                 tags={["C#", "Unity", "VR", "Photon","TS", "React-Native", "GraphQL", "Meta", "Avatars"]}
                 fileUrl={"recommendations/Cheerio.pdf"}
+                videoUrls={["https://www.youtube.com/embed/mlJCEAxrGio?si=41JNa0dayuPy1guV", "https://www.youtube.com/embed/gxePUMuYZSc?si=b1cjDCINeSUTJPeB", "https://www.youtube.com/embed/Ifs2LI464RE?si=kaLcG6oclmuaoV1m"]}
             />
             <ExperienceCard
                 company={"Framestore"}
                 title={"Unreal Engine VR Developer"}
                 time={"October 2020- February 2021"}
                 tags={["C++", "Unreal Engine", "VR"]}
+                videoUrls={["https://www.youtube.com/embed/R5aQGuTQI7E?si=IuyrvQjH1FjEN3Qf"]}
             />
             <ExperienceCard
                 company={"Universidad Panamericana"}
