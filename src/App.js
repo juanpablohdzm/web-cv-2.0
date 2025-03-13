@@ -149,7 +149,7 @@ function App() {
             <ExperienceCard
                 company={"Framestore"}
                 title={"Unreal Engine VR Developer"}
-                time={"October 2020- February 2021"}
+                time={"October 2022 - February 2023"}
                 tags={["C++", "Unreal Engine", "VR"]}
                 videoUrls={["https://www.youtube.com/embed/R5aQGuTQI7E?si=IuyrvQjH1FjEN3Qf"]}
             />
