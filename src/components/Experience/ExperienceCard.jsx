@@ -148,21 +148,40 @@ function ExperienceCard({
                                 <h2 className="text-2xl font-semibold text-gray-900 mb-6">
                                     {company} - Project Videos
                                 </h2>
-                                <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-4 styled-scrollbar">
-                                    {videoUrls.map((url, index) => (
-                                        <div
-                                            key={index}
-                                            className="aspect-video rounded-2xl overflow-hidden bg-black/5"
-                                        >
-                                            <iframe
-                                                src={url}
-                                                title={`Video ${index + 1}`}
-                                                className="w-full h-full"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowFullScreen
-                                            />
+                                <div className="relative">
+                                    <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-4 styled-scrollbar">
+                                        {videoUrls.map((url, index) => (
+                                            <div
+                                                key={index}
+                                                className="aspect-video rounded-2xl overflow-hidden bg-black/5"
+                                            >
+                                                <iframe
+                                                    src={url}
+                                                    title={`Video ${index + 1}`}
+                                                    className="w-full h-full"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                    {videoUrls.length >= 2 && (
+                                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-gray-700 animate-bounce">
+                                            <svg
+                                                className="w-6 h-6"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={2}
+                                                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                                                />
+                                            </svg>
                                         </div>
-                                    ))}
+                                    )}
                                 </div>
                             </div>
                         </div>

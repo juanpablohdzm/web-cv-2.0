@@ -1,3 +1,5 @@
+import Tag from "./Utilities/Tag";
+
 function Game() {
     return (
         <div>
@@ -21,6 +23,12 @@ function Game() {
                 </div>
             </div>
             <div className="max-w-3xl mx-auto text-center my-8">
+                <div className="flex justify-center mb-4 flex-wrap gap-2 mt-4">
+                    <Tag text={"Javascript"} />
+                    <Tag text={"EtherJs"} />
+                    <Tag text={"Solidity"} />
+                    <Tag text={"PlayCanvas"} />
+                </div>
                 <blockquote className="italic flex-grow gap-24 font-serif text-xl text-gray-800">
                     <p>
                         Step into a developing space where creativity begins to

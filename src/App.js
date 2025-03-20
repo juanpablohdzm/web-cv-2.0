@@ -26,7 +26,7 @@ function App() {
                             Featured Projects
                         </h2>
                         <p className="text-xl text-gray-600">
-                            A collection of my most impactful work
+                            A collection of some of my work
                         </p>
                     </div>
 
@@ -77,6 +77,18 @@ function App() {
                             ]}
                             description="A multiplayer VR experience that enables users to watch YouTube videos together in a virtual session, built with Unity and Photon for seamless networking."
                         />
+                        <ProjectCard
+                            identifier="05"
+                            title="Nevermet"
+                            tools={[
+                                "Javascript",
+                                "React Native",
+                                "GraphQL",
+                                "iOS",
+                                "Android",
+                            ]}
+                            description="Nevermet is a mobile application that allows users to meet new people. Created with React Native and GraphQL for the backend"
+                        />
                     </div>
                 </div>
             </section>
@@ -118,6 +130,13 @@ function App() {
                             ]}
                         />
                         <ExperienceCard
+                            company="RuckusDev"
+                            title="Unreal Engine C++ Architecture Developer"
+                            time="October 2020- February 2021"
+                            tags={["C++", "Unreal Engine", "Slate", "UMG"]}
+                            fileUrl="recommendations/ruckusDev.pdf"
+                        />
+                        <ExperienceCard
                             company="CheerioWorld/3DIQ"
                             title="VR Developer"
                             time="April 2019 - October 2022"
@@ -135,6 +154,28 @@ function App() {
                                 "https://www.youtube.com/embed/mlJCEAxrGio",
                                 "https://www.youtube.com/embed/gxePUMuYZSc",
                             ]}
+                        />
+                        <ExperienceCard
+                            company="Framestore"
+                            title="Unreal Engine VR Developer"
+                            time="October 2022 - February 2023"
+                            tags={["C++", "Unreal Engine", "VR", "Networking"]}
+                            fileUrl="recommendations/Cheerio.pdf"
+                            videoUrls={[
+                                "https://www.youtube.com/embed/R5aQGuTQI7E",
+                            ]}
+                        />
+                        <ExperienceCard
+                            company="Universidad Panamericana"
+                            title="Image processing research assistant"
+                            time="June 2018 - January 2019"
+                            tags={["C#", "Unity", "VR", "Matlab"]}
+                        />
+                        <ExperienceCard
+                            company="Inmersys"
+                            title="XR Gameplay programmer"
+                            time="June 2017 - January 2018"
+                            tags={["C#", "Unity", "VR", "XR", "Firebase"]}
                         />
                     </div>
                 </div>
