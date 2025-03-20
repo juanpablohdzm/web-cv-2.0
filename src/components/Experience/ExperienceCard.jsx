@@ -1,100 +1,175 @@
-﻿import Tag from "../Utilities/Tag";
-import feather from "feather-icons";
-import { useEffect, useState } from "react";
+﻿import { useState } from "react";
+import "./ExperienceCard.css";
 
-function ExperienceCard({ company, title, time, tags, fileUrl, videoUrls }) {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isHovered, setIsHovered] = useState(false);
-    const [fade, setFade] = useState(true); // Controls fade transition
-
-    useEffect(() => {
-        feather.replace();
-    }, []);
-
-    useEffect(() => {
-        if (!videoUrls || videoUrls.length <= 1) return;
-
-        let interval;
-        if (!isHovered) {
-            interval = setInterval(() => {
-                setFade(false); // Start fading out
-                setTimeout(() => {
-                    setCurrentIndex((prevIndex) => (prevIndex + 1) % videoUrls.length);
-                    setFade(true); // Fade back in
-                }, 500); // Delay for smooth transition
-            }, 5000);
-        }
-
-        return () => clearInterval(interval);
-    }, [isHovered, videoUrls]);
+function ExperienceCard({
+    company,
+    title,
+    time,
+    description,
+    tags,
+    fileUrl,
+    videoUrls,
+}) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <div className="bg-gray-50 px-8 py-10 rounded-md flex flex-col h-full min-h-[300px] text-center">
-            <div className="flex-grow">
-                <div className="flex flex-wrap justify-center">
-                    <h2 className="font-semibold text-gray-700 text-2xl mb-4">{company}</h2>
-                    <h2 className="font-semibold text-gray-700 text-2xl mb-4">{title}</h2>
-                    <h4 className="font-medium text-gray-700 text-lg mb-4">{time}</h4>
-                </div>
-
-                <div className="my-10">
-                    <div className="flex flex-wrap gap-2 justify-center">
-                        {tags.map((tag, index) => <Tag key={index} text={tag} />)}
+        <>
+            {/* Card */}
+            <div className="group bg-white rounded-3xl p-8 hover:shadow-lg transition-all duration-300">
+                <div className="flex items-start justify-between mb-6">
+                    {/* Icon - You can customize this based on the company */}
+                    <div className="w-12 h-12 bg-black/5 rounded-2xl flex items-center justify-center mb-4">
+                        <svg
+                            className="w-6 h-6 text-gray-700"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            />
+                        </svg>
                     </div>
+
+                    {/* Video Button */}
+                    {videoUrls && videoUrls.length > 0 && (
+                        <button
+                            onClick={() => setIsModalOpen(true)}
+                            className="w-10 h-10 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center transition-colors"
+                            aria-label="View videos"
+                        >
+                            <svg
+                                className="w-6 h-6 text-gray-700"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                />
+                            </svg>
+                        </button>
+                    )}
                 </div>
 
-                {videoUrls && videoUrls.length > 0 && (
-                    <div
-                        className="w-full flex flex-col items-center"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
-                    >
-                        {/* Smooth Fade Transition */}
-                        <iframe
-                            key={currentIndex}
-                            src={videoUrls[currentIndex]}
-                            title={`YouTube video ${currentIndex + 1}`}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                            allowFullScreen
-                            className={`w-full h-64 rounded-md transition-opacity duration-500 ease-in-out ${
-                                fade ? "opacity-100" : "opacity-0"
-                            } mb-4`}
-                        ></iframe>
+                {/* Content */}
+                <div>
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-1">
+                        {company}
+                    </h3>
+                    <h4 className="text-lg text-gray-700 mb-2">{title}</h4>
+                    <p className="text-sm text-gray-500 mb-4">{time}</p>
 
-                        {/* Dots for Navigation */}
-                        <div className="flex gap-2 justify-center mb-5">
-                            {videoUrls.map((_, index) => (
-                                <button
-                                    key={index}
-                                    className={`w-3 h-3 rounded-full transition-all ${
-                                        currentIndex === index ? "bg-blue-600 w-4" : "bg-gray-300"
-                                    }`}
-                                    onClick={() => {
-                                        setFade(false);
-                                        setTimeout(() => {
-                                            setCurrentIndex(index);
-                                            setFade(true);
-                                        }, 300);
-                                    }}
+                    {description && (
+                        <p className="text-gray-600 mb-6 leading-relaxed">
+                            {description}
+                        </p>
+                    )}
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                        {tags.map((tag, index) => (
+                            <span
+                                key={index}
+                                className="px-3 py-1 bg-black/5 text-gray-700 rounded-full text-sm"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+
+                    {/* Recommendation Link */}
+                    {fileUrl && (
+                        <a
+                            href={fileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-blue-600 hover:text-blue-700 transition-colors text-sm"
+                        >
+                            <svg
+                                className="w-4 h-4 mr-1"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                                 />
-                            ))}
+                            </svg>
+                            View Recommendation Letter
+                        </a>
+                    )}
+                </div>
+            </div>
+
+            {/* Modal */}
+            {isModalOpen && (
+                <div className="fixed inset-0 z-50 overflow-y-auto">
+                    {/* Backdrop */}
+                    <div
+                        className="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
+                        onClick={() => setIsModalOpen(false)}
+                    />
+
+                    {/* Modal Panel */}
+                    <div className="relative min-h-screen flex items-center justify-center p-4">
+                        <div className="relative bg-white rounded-3xl max-w-4xl w-full mx-auto p-8">
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setIsModalOpen(false)}
+                                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors"
+                            >
+                                <svg
+                                    className="w-5 h-5 text-gray-700"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+                                </svg>
+                            </button>
+
+                            {/* Modal Content */}
+                            <div>
+                                <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+                                    {company} - Project Videos
+                                </h2>
+                                <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-4 styled-scrollbar">
+                                    {videoUrls.map((url, index) => (
+                                        <div
+                                            key={index}
+                                            className="aspect-video rounded-2xl overflow-hidden bg-black/5"
+                                        >
+                                            <iframe
+                                                src={url}
+                                                title={`Video ${index + 1}`}
+                                                className="w-full h-full"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                )}
-                {fileUrl && (
-                    <a
-                        href={fileUrl}
-                        download
-                        className="bg-blue-600 text-white px-6 py-3 rounded-2xl font-medium hover:bg-blue-700 transition flex items-center gap-2 justify-center mt-5"
-                    >
-                        <i data-feather="download"></i>
-                        <span>Recommendation Letter</span>
-                    </a>
-                )}
-            </div>
-        </div>
+                </div>
+            )}
+        </>
     );
 }
 

@@ -1,0 +1,21 @@
+.styled-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.styled-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.styled-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
