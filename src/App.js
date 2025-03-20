@@ -5,6 +5,7 @@ import Hero from "./components/Home/Hero";
 import ProjectCard from "./components/Projects/ProjectCard";
 import ExperienceCard from "./components/Experience/ExperienceCard";
 import Game from "./components/Game";
+import CoreValues from "./components/About/CoreValues";
 
 function App() {
     useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
 
             {/* Hero Section */}
             <Hero />
+            <CoreValues />
 
             {/* Projects Section */}
             <section id="projects" className="py-24 bg-gray-50">
