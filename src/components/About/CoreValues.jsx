@@ -38,7 +38,7 @@ function CoreValues() {
             ),
             title: "Responsability",
             description:
-                "In order to create something unique, others have to know that I have the responsibility to get the job done, that way my co-workers can concentrate on their own things.",
+                "In order to create something unique, others need to know that I am responsible for getting the job done. This way, my co-workers can focus on their own tasks. I take full ownership of my work, ensuring that every detail is addressed and that I deliver on time. By doing so, I create an environment of trust and accountability, where everyone can contribute their best.",
         },
         {
             icon: (
@@ -58,7 +58,7 @@ function CoreValues() {
             ),
             title: "Communication",
             description:
-                "Greate developers are not a one-man army, we have other people we can rely on, hence, communication is a vital ability to have. I always incline to communicate any problem, solution, and discovery that I have.",
+                "Great developers are not a one-man army; we have others we can rely on. Therefore, communication is a vital skill to have. I always make sure to communicate any problems, solutions, and discoveries I come across.",
         },
         {
             icon: (
@@ -78,7 +78,7 @@ function CoreValues() {
             ),
             title: "Honesty",
             description:
-                "Along with communication comes respectful honesty, I will always give credit to those people that deserve it, as well as take responsibility for those problems that I've caused.",
+                "Along with communication, I believe in being respectfully honest. I will always make sure to acknowledge those who truly deserve credit, and take responsibility for any problems or challenges I may have contributed to.",
         },
         {
             icon: (
@@ -98,7 +98,7 @@ function CoreValues() {
             ),
             title: "Quality",
             description:
-                "Quality is the most important aspect of any project, I always strive to deliver the best quality possible, no matter the circumstances.",
+                "Quality is the most important aspect of any project. I always strive to deliver the best possible quality, regardless of the circumstances. I believe that true quality comes from commitment and dedication, a keen attention to detail, and the ability to recognize and overcome my own difficulties.",
         },
     ];
 
