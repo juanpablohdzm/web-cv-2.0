@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import TestimonialCard from "../Testimonials/TestimonialCard";
 
 function GossipSection() {
@@ -25,36 +24,8 @@ function GossipSection() {
         }
     ];
 
-    const [current, setCurrent] = useState(0);
-    const [isHovering, setIsHovering] = useState(false);
-    const [fade, setFade] = useState(true);
-    const delay = 5000;
-
-    useEffect(() => {
-        if (!isHovering) {
-            const timer = setInterval(() => {
-                setFade(false);
-                setTimeout(() => {
-                    setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-                    setFade(true);
-                }, 500); // match fade out duration
-            }, delay);
-            return () => clearInterval(timer);
-        }
-    }, [testimonials.length, isHovering]);
-
-    const handleDotClick = (index) => {
-        if (index !== current) {
-            setFade(false);
-            setTimeout(() => {
-                setCurrent(index);
-                setFade(true);
-            }, 500);
-        }
-    };
-
     return (
-        <section id="gossip" className="py-24 bg-gray-50 min-h-[700px] flex flex-col items-center">
+        <section id="gossip" className="py-24 bg-gray-50 flex flex-col items-center">
             <div className="text-center mb-16">
                 <h2 className="text-4xl font-bold text-gray-900 mb-4">
                     Testimonials
@@ -63,29 +34,19 @@ function GossipSection() {
                     What people say about me
                 </p>
             </div>
-            <div className="w-full max-w-xl px-4">
-                <div
-                    className={`relative transition-opacity duration-500 ease-in-out ${fade ? 'opacity-100' : 'opacity-0'}`}
-                    onPointerEnter={() => setIsHovering(true)}
-                    onPointerLeave={() => setIsHovering(false)}
-                >
-                    <TestimonialCard
-                        title={testimonials[current].title}
-                        description={testimonials[current].description}
-                        company={testimonials[current].company}
-                    />
-                </div>
-                <div className="flex justify-center space-x-2 mt-4">
-                    {testimonials.map((_, index) => (
-                        <div
-                            key={index}
-                            className={index === current ? 'bg-gray-800 w-3 h-3 rounded-full' : 'bg-gray-300 w-3 h-3 rounded-full'}
-                            onClick={() => handleDotClick(index)}
-                            onPointerEnter={() => setIsHovering(true)}
-                            onPointerLeave={() => setIsHovering(false)}
-                        ></div>
-                    ))}
-                </div>
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4">
+                { testimonials.map((testimonial, index) => {
+                    return (<div
+                        key={index}
+                        className={""}
+                    >
+                        <TestimonialCard
+                            title={testimonial.title}
+                            description={testimonial.description}
+                            company={testimonial.company}
+                        />
+                    </div>)})
+                }
             </div>
         </section>
     );
