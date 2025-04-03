@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+﻿import { useState, useEffect } from "react";
 import "./ExperienceCard.css";
 
 function ExperienceCard({
@@ -11,6 +11,8 @@ function ExperienceCard({
     videoUrls,
 }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [showPulse, setShowPulse] = useState(true);
 
     return (
         <>
@@ -38,7 +40,10 @@ function ExperienceCard({
                     {videoUrls && videoUrls.length > 0 && (
                         <button
                             onClick={() => setIsModalOpen(true)}
-                            className="w-10 h-10 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center transition-colors"
+                            className={`w-10 h-10 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center transition-colors ${
+                                showPulse ? 'animate-bounce' : ''
+                            }`}
+                            onPointerEnter={() => setShowPulse(false)}
                             aria-label="View videos"
                         >
                             <svg
