@@ -11,7 +11,7 @@ function Hero() {
     }, []);
 
     return (
-        <div className="relative h-screen overflow-hidden bg-black">
+        <div className="relative h-screen overflow-hidden bg-[#B0C4DE]">
             {/* Dynamic Background */}
             <div className="absolute inset-0">
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80 z-10" />
@@ -45,25 +45,18 @@ function Hero() {
 
                 <div className="flex flex-wrap justify-center gap-4 mb-12">
                     <span className="px-6 py-3 bg-white/10 text-white rounded-full hover:bg-white/20 transition-colors">
-                        C++ / Unreal Engine
-                    </span>
-                    <span className="px-6 py-3 bg-white/10 text-white rounded-full hover:bg-white/20 transition-colors">
-                        VR / AR Development
+                        Software Architecture
                     </span>
                     <span className="px-6 py-3 bg-white/10 text-white rounded-full hover:bg-white/20 transition-colors">
                         Blockchain
                     </span>
                     <span className="px-6 py-3 bg-white/10 text-white rounded-full hover:bg-white/20 transition-colors">
+                        Game development
+                    </span>
+                    <span className="px-6 py-3 bg-white/10 text-white rounded-full hover:bg-white/20 transition-colors">
                         Full Stack
                     </span>
                 </div>
-
-                <a
-                    href="#projects"
-                    className="px-8 py-4 bg-white text-black rounded-full text-lg font-medium hover:bg-gray-100 transition-colors"
-                >
-                    View My Work
-                </a>
             </div>
 
             {/* Scroll Indicator */}
