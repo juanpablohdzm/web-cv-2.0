@@ -27,7 +27,7 @@ function ContactSection() {
                         ></i>
                     </a>
                     <a
-                        href="mailto:juanpablohdzm95@gmail.com"
+                        href="mailto:mosti.dev@gmail.com"
                         className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
                     >
                         <i
