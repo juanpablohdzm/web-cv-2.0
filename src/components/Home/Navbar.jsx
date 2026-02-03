@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -40,8 +40,15 @@ function Navbar() {
                                 About
                             </a>
                             <a
+                                href="#skills"
+                                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                            >
+                                Skills
+                            </a>
+                            <a
                                 href="#gossip"
-                                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                            >
                                 Testimonials
                             </a>
                             <a
@@ -126,6 +133,12 @@ function Navbar() {
                         className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
                     >
                         About
+                    </a>
+                    <a
+                        href="#skills"
+                        className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                    >
+                        Skills
                     </a>
                     <a
                         href="#projects"
