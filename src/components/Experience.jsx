@@ -8,8 +8,9 @@ const EXPERIENCE = [
         bullets: [
             "Developing real-time 3D pipeline tooling and engine integrations in C++.",
             "Working on high-performance data streaming and scene graph systems.",
+            "Contributed to Amazon VAMS (Visual Asset Management System) — an AWS open-source solution for managing 3D assets and digital twins, connecting real-time 3D pipelines with cloud-based asset workflows.",
         ],
-        tags: ["C++", "Real-time", "3D Pipeline"],
+        tags: ["C++", "Real-time", "3D Pipeline", "AWS", "VAMS"],
     },
     {
         company: "AppLayer",

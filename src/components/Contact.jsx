@@ -2,7 +2,6 @@ import { useState } from "react";
 import useScrollReveal from "../hooks/useScrollReveal";
 
 const EMAIL = "mosti.dev@gmail.com";
-const PHONE = "(+39) 331 408 6793";
 const GITHUB = "https://github.com/juanpablohdzm";
 const LINKEDIN = "https://www.linkedin.com/in/juan-pablo-h-b64094147/";
 
@@ -46,9 +45,6 @@ export default function Contact() {
                             {copied ? "✓ Copied!" : "Copy"}
                         </button>
                     </div>
-
-                    {/* Phone */}
-                    <p className="font-mono text-xs text-slate-500 mb-8">{PHONE}</p>
 
                     {/* Social links */}
                     <div className="flex items-center justify-center gap-4 mb-8">

@@ -6,28 +6,32 @@ const TESTIMONIALS = [
         author: "Itamar Salomão",
         title: "CTO",
         company: "AppLayer",
-        file: "/recommendations/AppLayer.pdf",
+        file: `${process.env.PUBLIC_URL}/recommendations/AppLayer.pdf`,
+        filename: "AppLayer_recommendation.pdf",
     },
     {
         quote: "dependable, collaborative, and a pleasure to work with",
         author: "Solaris & Cam",
         title: "Leadership",
         company: "CheerioWorld / 3DIQ",
-        file: "/recommendations/Cheerio.pdf",
+        file: `${process.env.PUBLIC_URL}/recommendations/Cheerio.pdf`,
+        filename: "Cheerio_recommendation.pdf",
     },
     {
         quote: "exceptionally reliable and demonstrated resilience even in high-pressure situations",
         author: "Tomasz & Loïc",
         title: "Team Leads",
         company: "Realworld-one",
-        file: "/recommendations/RW1.pdf",
+        file: `${process.env.PUBLIC_URL}/recommendations/RW1.pdf`,
+        filename: "RW1_recommendation.pdf",
     },
     {
         quote: "dependable, collaborative, a pleasure to work with",
         author: "Gil Hinojosa",
         title: "Director",
         company: "RuckusDev",
-        file: "/recommendations/ruckusDev.pdf",
+        file: `${process.env.PUBLIC_URL}/recommendations/ruckusDev.pdf`,
+        filename: "ruckusDev_recommendation.pdf",
     },
 ];
 
@@ -48,8 +52,7 @@ function TestimonialCard({ item, delay }) {
                     </div>
                     <a
                         href={item.file}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        download={item.filename}
                         className="shrink-0 font-mono text-xs border border-slate-700 text-slate-400 px-3 py-1.5 rounded hover:border-sky-400/50 hover:text-sky-400 transition-colors"
                     >
                         Download letter →

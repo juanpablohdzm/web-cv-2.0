@@ -67,9 +67,8 @@ export default function Hero() {
                     {/* CTAs */}
                     <div className="flex flex-wrap gap-3 mt-2">
                         <a
-                            href="/JuanPHernandez-CV.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href={`${process.env.PUBLIC_URL}/JuanPHernandez-CV.pdf`}
+                            download="JuanPHernandez-CV.pdf"
                             className="inline-flex items-center gap-2 px-4 py-2 bg-sky-400 text-slate-950 text-sm font-semibold rounded hover:bg-sky-300 transition-colors"
                         >
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
