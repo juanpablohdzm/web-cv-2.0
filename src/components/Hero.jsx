@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import useTypewriter from "../hooks/useTypewriter";
 
 const ROLES = [
@@ -13,6 +14,191 @@ const STATS = [
     { value: "8", label: "roles held" },
     { value: "10/10", label: "Summa Cum Laude" },
 ];
+
+const CODE_SNIPPETS = [
+    {
+        filename: "owner_ptr.hpp",
+        code:
+`// RAII — exclusive ownership
+template<typename T>
+class OwnerPtr {
+public:
+    explicit OwnerPtr(T* p = nullptr)
+        : _ptr(p) {}
+
+    // Non-copyable
+    OwnerPtr(const OwnerPtr&) = delete;
+    OwnerPtr& operator=(const OwnerPtr&) = delete;
+
+    // Movable
+    OwnerPtr(OwnerPtr&& o) noexcept
+        : _ptr(o._ptr) { o._ptr = nullptr; }
+
+    ~OwnerPtr() { delete _ptr; }
+
+    T* get() const noexcept { return _ptr; }
+
+private:
+    T* _ptr;
+};`,
+    },
+    {
+        filename: "worker_pool.hpp",
+        code:
+`// Thread-safe job queue
+class WorkerPool {
+    std::vector<std::thread> m_workers;
+    std::queue<std::function<void()>> m_jobs;
+    std::mutex m_mutex;
+    std::condition_variable m_cv;
+    bool m_stop = false;
+
+public:
+    void Enqueue(std::function<void()> job) {
+        {
+            std::lock_guard lock(m_mutex);
+            m_jobs.push(std::move(job));
+        }
+        m_cv.notify_one();
+    }
+
+    ~WorkerPool() { Stop(); }
+};`,
+    },
+    {
+        filename: "mover.cpp",
+        code:
+`// Unreal Engine — tween to target
+UFUNCTION(BlueprintCallable)
+void AMover::MoveTo(FVector target) {
+    UQuickTween::To(this, 0.8f)
+        .From(GetActorLocation())
+        .To(target)
+        .Ease(EEaseType::OutBack)
+        .OnComplete(
+            FSimpleDelegate::CreateUObject(
+                this, &AMover::OnMoveComplete
+            )
+        )
+        .Play();
+}`,
+    },
+];
+
+const KEYWORDS = new Set([
+    "template","class","typename","public","private","explicit",
+    "delete","return","for","auto","void","nullptr","this","new",
+    "const","static","noexcept","bool","int","float","true","false",
+    "operator","struct","using","namespace","inline","virtual","override",
+]);
+const STD_TYPES = new Set([
+    "std","vector","thread","queue","function","mutex","condition_variable",
+    "lock_guard","unique_lock","move","forward",
+]);
+const UE_TYPES = new Set([
+    "UQuickTween","EEaseType","FVector","FSimpleDelegate","AMover",
+    "UFUNCTION","BlueprintCallable",
+]);
+
+function tokenizeLine(line) {
+    const trimmed = line.trimStart();
+    if (trimmed.startsWith("//")) {
+        return [{ cls: "text-slate-500", text: line }];
+    }
+    if (trimmed.startsWith("UFUNCTION")) {
+        return [{ cls: "text-emerald-400/80", text: line }];
+    }
+    const tokens = [];
+    const re = /(\b\w+\b)|([^\w])/g;
+    let m;
+    while ((m = re.exec(line)) !== null) {
+        const word = m[1], sym = m[2];
+        if (word) {
+            if (KEYWORDS.has(word))      tokens.push({ cls: "text-violet-400",  text: word });
+            else if (UE_TYPES.has(word)) tokens.push({ cls: "text-amber-400",   text: word });
+            else if (STD_TYPES.has(word))tokens.push({ cls: "text-sky-400",     text: word });
+            else if (/^\d+(\.\d+)?f?$/.test(word)) tokens.push({ cls: "text-orange-400", text: word });
+            else                         tokens.push({ cls: "text-slate-200",   text: word });
+        } else {
+            tokens.push({ cls: "text-slate-400", text: sym });
+        }
+    }
+    return tokens;
+}
+
+function AnimatedCodeBlock() {
+    const [idx, setIdx]             = useState(0);
+    const [displayed, setDisplayed] = useState("");
+    const [phase, setPhase]         = useState("typing");
+    const [cursorOn, setCursorOn]   = useState(true);
+
+    useEffect(() => {
+        const id = setInterval(() => setCursorOn(v => !v), 530);
+        return () => clearInterval(id);
+    }, []);
+
+    const full = CODE_SNIPPETS[idx].code;
+
+    useEffect(() => {
+        if (phase === "typing") {
+            if (displayed.length < full.length) {
+                const id = setTimeout(() => setDisplayed(full.slice(0, displayed.length + 1)), 28);
+                return () => clearTimeout(id);
+            }
+            const id = setTimeout(() => setPhase("deleting"), 2500);
+            return () => clearTimeout(id);
+        }
+        if (phase === "deleting") {
+            if (displayed.length > 0) {
+                const id = setTimeout(() => setDisplayed(d => d.slice(0, -1)), 10);
+                return () => clearTimeout(id);
+            }
+            const id = setTimeout(() => {
+                setIdx(i => (i + 1) % CODE_SNIPPETS.length);
+                setPhase("typing");
+            }, 400);
+            return () => clearTimeout(id);
+        }
+    }, [phase, displayed, full]);
+
+    const lines = displayed.split("\n");
+
+    return (
+        <div className="rounded-xl overflow-hidden border border-slate-800 shadow-2xl shadow-sky-400/5">
+            {/* Title bar */}
+            <div className="flex items-center gap-2 px-4 py-3 bg-slate-900 border-b border-slate-800">
+                <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                <span className="w-3 h-3 rounded-full bg-amber-500/80" />
+                <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                <span className="ml-3 font-mono text-xs text-slate-500">
+                    {CODE_SNIPPETS[idx].filename}
+                </span>
+            </div>
+            {/* Code area */}
+            <div className="bg-slate-900 p-5 min-h-[320px]">
+                <pre className="font-mono text-xs leading-relaxed">
+                    {lines.map((line, i) => {
+                        const isLast = i === lines.length - 1;
+                        const tokens = tokenizeLine(line);
+                        return (
+                            <div key={i} className="flex">
+                                <span className="text-slate-700 mr-4 w-5 text-right shrink-0 select-none">{i + 1}</span>
+                                <span>
+                                    {tokens.map((tok, j) => (
+                                        <span key={j} className={tok.cls}>{tok.text}</span>
+                                    ))}
+                                    {isLast && (
+                                        <span className={`text-sky-400 ${cursorOn ? "opacity-100" : "opacity-0"}`}>▌</span>
+                                    )}
+                                </span>
+                            </div>
+                        );
+                    })}
+                </pre>
+            </div>
+        </div>
+    );
+}
 
 export default function Hero() {
     const role = useTypewriter(ROLES);
@@ -101,79 +287,9 @@ export default function Hero() {
                     </div>
                 </div>
 
-                {/* Right column — code block (desktop only) */}
+                {/* Right column — animated code block (desktop only) */}
                 <div className="hidden md:block">
-                    <div className="rounded-xl overflow-hidden border border-slate-800 shadow-2xl shadow-sky-400/5">
-                        {/* Editor title bar */}
-                        <div className="flex items-center gap-2 px-4 py-3 bg-slate-900 border-b border-slate-800">
-                            <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                            <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                            <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                            <span className="ml-3 font-mono text-xs text-slate-500">owner_ptr.cpp</span>
-                        </div>
-                        {/* Code */}
-                        <div className="bg-slate-900 p-5 overflow-x-auto">
-                            <pre className="font-mono text-xs leading-relaxed">
-<span className="text-slate-500">{"// RAII smart pointer — no shared ownership"}</span>{"\n"}
-<span className="text-violet-400">template</span>
-<span className="text-slate-200">&lt;</span>
-<span className="text-violet-400">typename</span>
-<span className="text-sky-400"> T</span>
-<span className="text-slate-200">&gt;{"\n"}</span>
-<span className="text-violet-400">class </span>
-<span className="text-amber-400">OwnerPtr </span>
-<span className="text-slate-200">{"{"}{"\n"}</span>
-<span className="text-slate-200">{"public:"}{"\n"}</span>
-<span className="text-slate-200">{"    "}</span>
-<span className="text-violet-400">explicit </span>
-<span className="text-sky-400">OwnerPtr</span>
-<span className="text-slate-200">(T* ptr = </span>
-<span className="text-violet-400">nullptr</span>
-<span className="text-slate-200">) : _ptr(ptr) {"{}"}{"\n"}</span>
-{"\n"}
-<span className="text-slate-500">{"    // Non-copyable"}</span>{"\n"}
-<span className="text-slate-200">{"    "}OwnerPtr(</span>
-<span className="text-violet-400">const </span>
-<span className="text-amber-400">OwnerPtr</span>
-<span className="text-slate-200">&) = </span>
-<span className="text-violet-400">delete</span>
-<span className="text-slate-200">;{"\n"}</span>
-<span className="text-slate-200">{"    "}OwnerPtr& </span>
-<span className="text-violet-400">operator</span>
-<span className="text-slate-200">=(</span>
-<span className="text-violet-400">const </span>
-<span className="text-amber-400">OwnerPtr</span>
-<span className="text-slate-200">&) = </span>
-<span className="text-violet-400">delete</span>
-<span className="text-slate-200">;{"\n"}</span>
-{"\n"}
-<span className="text-slate-500">{"    // Move semantics"}</span>{"\n"}
-<span className="text-slate-200">{"    "}OwnerPtr(</span>
-<span className="text-amber-400">OwnerPtr</span>
-<span className="text-slate-200">&& other) </span>
-<span className="text-violet-400">noexcept</span>
-<span className="text-slate-200">{"\n"}{"        "}: _ptr(other._ptr) {"{"} other._ptr = </span>
-<span className="text-violet-400">nullptr</span>
-<span className="text-slate-200">; {"}"}{"\n"}</span>
-{"\n"}
-<span className="text-slate-200">{"    "}~OwnerPtr() {"{"} </span>
-<span className="text-violet-400">delete </span>
-<span className="text-slate-200">_ptr; {"}"}{"\n"}</span>
-{"\n"}
-<span className="text-slate-200">{"    "}T* </span>
-<span className="text-sky-400">get</span>
-<span className="text-slate-200">() </span>
-<span className="text-violet-400">const noexcept </span>
-<span className="text-slate-200">{"{"} </span>
-<span className="text-violet-400">return </span>
-<span className="text-slate-200">_ptr; {"}"}{"\n"}</span>
-{"\n"}
-<span className="text-slate-500">{"private:"}{"\n"}</span>
-<span className="text-slate-200">{"    "}T* _ptr;</span>{"\n"}
-<span className="text-slate-200">{"};"}</span>
-                            </pre>
-                        </div>
-                    </div>
+                    <AnimatedCodeBlock />
                 </div>
             </div>
 

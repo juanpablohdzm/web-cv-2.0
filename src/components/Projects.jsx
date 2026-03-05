@@ -19,16 +19,11 @@ function QuickTweenCard() {
                         className="relative z-10 w-full h-full object-cover"
                         onError={(e) => { e.currentTarget.style.display = "none"; }}
                     />
-                    {/* Fallback gradient shown behind the image */}
-                    <div className="absolute inset-0 -z-0 bg-gradient-to-br from-slate-900 via-amber-950/30 to-slate-900 flex items-center justify-center">
+                    {/* Fallback gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-amber-950/30 to-slate-900 flex items-center justify-center">
                         <div className="text-center select-none">
                             <p className="font-mono text-amber-400/40 text-4xl font-bold tracking-tight">QT</p>
                             <p className="font-mono text-slate-600 text-xs mt-1">QuickTween</p>
-                        </div>
-                        <div className="absolute bottom-3 left-4 right-4 space-y-1 opacity-20 pointer-events-none">
-                            {["auto tween = QuickTween::To(Actor, 1.2f)", "    .Ease(EEaseType::OutCubic).Play();"].map((line, i) => (
-                                <p key={i} className="font-mono text-xs text-amber-300 truncate">{line}</p>
-                            ))}
                         </div>
                     </div>
 
@@ -37,7 +32,7 @@ function QuickTweenCard() {
                         href={FAB_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="absolute top-2 right-2 flex items-center gap-1 bg-black/70 backdrop-blur-sm text-white text-xs font-semibold px-2 py-0.5 rounded-full border border-white/10 hover:bg-black/90 transition-colors"
+                        className="absolute top-2 right-2 flex items-center gap-1 bg-black/70 backdrop-blur-sm text-white text-xs font-semibold px-2 py-0.5 rounded-full border border-white/10 hover:bg-black/90 transition-colors z-20"
                     >
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" className="text-amber-400">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -66,7 +61,6 @@ function QuickTweenCard() {
                         ))}
                     </div>
 
-                    {/* CTA buttons */}
                     <div className="flex items-center gap-2">
                         <a
                             href={GITHUB_URL}
