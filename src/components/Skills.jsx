@@ -77,7 +77,7 @@ export default function Skills() {
                                 </p>
                             </div>
                             <a
-                                href="https://verify.openedg.org"
+                                href="https://verify.openedg.org/?id=ZbGH.4N92.T4gP"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="ml-auto font-mono text-xs border border-amber-400/40 text-amber-400 px-3 py-1.5 rounded hover:bg-amber-400/10 transition-colors whitespace-nowrap"

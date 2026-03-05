@@ -49,7 +49,7 @@ export default function Education() {
                                         <p className="font-mono text-xs text-slate-500 mt-0.5">OpenEDG · C++ Institute</p>
                                     </div>
                                     <a
-                                        href="https://verify.openedg.org"
+                                        href="https://verify.openedg.org/?id=ZbGH.4N92.T4gP"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="shrink-0 font-mono text-xs border border-amber-400/40 text-amber-400 px-3 py-1.5 rounded hover:bg-amber-400/10 transition-colors"
