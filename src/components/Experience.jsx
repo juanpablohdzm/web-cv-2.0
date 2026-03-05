@@ -210,7 +210,7 @@ function ExperienceModal({ item, onClose }) {
                     <p className="text-slate-400 text-sm leading-relaxed">{item.detail.context}</p>
 
                     <div>
-                        <p className="font-mono text-xs text-slate-500 mb-3">// key_contributions</p>
+                        <p className="font-mono text-xs text-slate-500 mb-3">{"// key_contributions"}</p>
                         <ul className="space-y-2.5">
                             {item.detail.highlights.map((h, i) => (
                                 <li key={i} className="text-sm text-slate-300 flex gap-3">
